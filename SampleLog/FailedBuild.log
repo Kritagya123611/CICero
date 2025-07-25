@@ -1,0 +1,27 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.example:sample-app >--------------------
+[INFO] Building sample-app 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]-------------------------------
+[WARNING] The POM for junit:junit:jar:4.13.2 is missing, no dependency information available
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ sample-app ---
+[ERROR] /home/runner/work/sample-app/src/main/java/com/example/App.java:[12,8] cannot find symbol
+  symbol:   class RandomClass
+  location: package com.example.utils
+
+[ERROR] /home/runner/work/sample-app/src/main/java/com/example/App.java:[13,5] cannot find symbol
+  symbol:   variable log
+  location: class com.example.App
+
+[INFO] 2 errors
+[INFO] -------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] -------------------------------------------------------------
+[INFO] Total time:  1.673 s
+[INFO] Finished at: 2025-07-25T11:30:12Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.1:compile (default-compile) on project sample-app: Compilation failure
+[ERROR] Compilation failure:
+[ERROR] /home/runner/work/sample-app/src/main/java/com/example/App.java:[12,8] cannot find symbol
+[ERROR] /home/runner/work/sample-app/src/main/java/com/example/App.java:[13,5] cannot find symbol
