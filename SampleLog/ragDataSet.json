@@ -1,0 +1,14 @@
+[
+  {
+    "log": "[ERROR] Cannot resolve symbol 'List'\n[ERROR] Compilation failed.",
+    "fix": "Add import for java.util.List at the top of your Java file."
+  },
+  {
+    "log": "[ERROR] Failed to connect to database.\nException: timeout",
+    "fix": "Check database URL, credentials, or if the DB is running."
+  },
+  {
+    "log": "[ERROR] npm install failed\nMissing dependency: react-router",
+    "fix": "Add 'react-router' to package.json and re-run `npm install`."
+  }
+]

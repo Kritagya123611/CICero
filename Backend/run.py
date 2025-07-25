@@ -1,4 +1,5 @@
 from Backend.logFilter import keyword_filter, tail_filter, diff_filter
+from Backend.LLMsol import extract_errors
 
 with open("SampleLog/FailedBuild.log", "r", encoding="utf-8") as f:
     failed_log = f.readlines()
@@ -19,3 +20,9 @@ final_log = "\n".join(k_errors + tail_errors + diff_errors)
 
 print("\n--- Filtered Error Log ---\n")
 print(final_log)
+
+print("\n🤖 Generating fix suggestion using Cohere...\n")
+suggestion = extract_errors(final_log)
+print("\n--- Suggested Fix ---\n")
+print(suggestion)
+
