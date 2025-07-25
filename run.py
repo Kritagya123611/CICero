@@ -1,15 +1,21 @@
-from Backend.errorExtract import extract_errors
-from Backend.LLMsol import get_fix_suggestion
+from Backend.logFilter import keyword_filter, tail_filter, diff_filter
 
-if __name__ == "__main__":
-    log_path = "SampleLog/FailedBuild.log"
+with open("SampleLog/FailedBuild.log", "r", encoding="utf-8") as f:
+    failed_log = f.readlines()
 
-    print("🔍 Extracting errors...")
-    error_text = extract_errors(log_path)
-    print("\n--- Extracted Errors ---\n")
-    print(error_text)
+try:
+    with open("SampleLog/SuccessBuild.log", "r", encoding="utf-8") as f:
+        success_log = f.readlines()
+except FileNotFoundError:
+    success_log = []
 
-    print("\n🤖 Generating fix suggestion using Cohere...")
-    suggestion = get_fix_suggestion(error_text)
-    print("\n--- Suggested Fix ---\n")
-    print(suggestion)
+# Apply log filtering
+k_errors = keyword_filter(failed_log)
+tail_errors = tail_filter(failed_log)
+diff_errors = diff_filter(failed_log, success_log) if success_log else []
+
+# Combine all results
+final_log = "\n".join(k_errors + tail_errors + diff_errors)
+
+print("\n--- Filtered Error Log ---\n")
+print(final_log)
